@@ -17,7 +17,7 @@ public class DealershipFileManager {
         this.filename = filename;
     }
 
-    public Dealership getDealership(){
+    public Dealership getDealership() {
 
         try {
 
@@ -40,7 +40,7 @@ public class DealershipFileManager {
             String input;
             int i = 0;
 
-            while ((input = bufferedReader.readLine()) != null){
+            while ((input = bufferedReader.readLine()) != null) {
 
                 String[] strings = input.split("|");
 
@@ -51,7 +51,7 @@ public class DealershipFileManager {
                     dealerPhone = strings[2];
                 }
 
-                if (i >= 1){
+                if (i >= 1) {
 
                     vin = Integer.parseInt(strings[0]);
                     year = Integer.parseInt(strings[1]);
@@ -72,15 +72,16 @@ public class DealershipFileManager {
 
                 dealership.addVehicle(vehicle);
             }
-            
+
+            return dealership;
+
         } catch (Exception e) {
             System.err.println("Error reading the file");
+            return null;
         }
-
-
     }
 
-    public void saveDealership(Dealership dealership){
+    public void saveDealership(Dealership dealership) {
 
 
     }
