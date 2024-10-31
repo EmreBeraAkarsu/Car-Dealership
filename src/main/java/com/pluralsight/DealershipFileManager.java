@@ -73,14 +73,17 @@ public class DealershipFileManager {
                     odometer = Integer.parseInt(strings[6]);
                     price = Double.parseDouble(strings[7]);
 
+                    //Add the read file to an ArrayList
                     vehicles.add(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
                 }
 
                 i++;
             }
 
+            //Create a new dealership object with the variables
             dealership = new Dealership(dealerName, dealerAddress, dealerPhone);
 
+            //Iterate through the vehicles list and add them one by one to the dealership object
             for (Vehicle vehicle : vehicles) {
 
                 dealership.addVehicle(vehicle);
@@ -101,16 +104,20 @@ public class DealershipFileManager {
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
 
+            //Create a StringBuilder to store the data you want to write
             StringBuilder stringBuilder = new StringBuilder();
 
+            //Add dealership to the stringBuilder
             stringBuilder.append(dealership);
 
             List<Vehicle> vehicles = dealership.getAllVehicles();
 
+            //Iterate through the vehicles list to append the vehicles one by one to append to the stringbuilder
             for (Vehicle vehicle : vehicles) {
                 stringBuilder.append(vehicle);
             }
 
+            //Write to the file
             bufferedWriter.write(String.valueOf(stringBuilder));
 
             bufferedWriter.close();
