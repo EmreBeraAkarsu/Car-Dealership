@@ -1,9 +1,8 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DealershipFileManager {
 
@@ -12,6 +11,8 @@ public class DealershipFileManager {
     public String getFilename() {
         return filename;
     }
+
+    Dealership dealership;
 
     public void setFilename(String filename) {
         this.filename = filename;
@@ -42,7 +43,7 @@ public class DealershipFileManager {
 
             while ((input = bufferedReader.readLine()) != null) {
 
-                String[] strings = input.split("|");
+                String[] strings = input.split("\\|");
 
                 if (i < 1) {
 
@@ -66,12 +67,14 @@ public class DealershipFileManager {
                 }
             }
 
-            Dealership dealership = new Dealership(dealerName, dealerAddress, dealerPhone);
+            dealership = new Dealership(dealerName, dealerAddress, dealerPhone);
 
             for (Vehicle vehicle : vehicles) {
 
                 dealership.addVehicle(vehicle);
             }
+
+            bufferedReader.close();
 
             return dealership;
 
@@ -83,6 +86,26 @@ public class DealershipFileManager {
 
     public void saveDealership(Dealership dealership) {
 
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.append(dealership);
+
+            List<Vehicle> vehicles = dealership.getAllVehicles();
+
+            for (Vehicle vehicle : vehicles) {
+                stringBuilder.append(vehicle);
+            }
+
+            bufferedWriter.write(String.valueOf(stringBuilder));
+
+            bufferedWriter.close();
+
+        } catch (Exception e) {
+            System.err.println("Error writing to the file");
+        }
 
     }
 }
