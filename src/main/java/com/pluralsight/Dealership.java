@@ -25,11 +25,15 @@ public class Dealership {
         Iterator<Vehicle> iterator = inventory.iterator();
 
         while (iterator.hasNext()){
-            if (iterator.next().getPrice() >= min && iterator.next().getPrice() <= max){
-                filteredList.add(iterator.next());
+
+            Vehicle vehicle = iterator.next();
+
+            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max){
+                filteredList.add(vehicle);
             }
         }
         return filteredList;
+        
     }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model){
@@ -38,9 +42,11 @@ public class Dealership {
 
         Iterator<Vehicle> iterator = inventory.iterator();
 
+
         while (iterator.hasNext()){
-            if (iterator.next().getMake().equalsIgnoreCase(make) && iterator.next().getModel().equalsIgnoreCase(model)){
-                filteredList.add(iterator.next());
+            Vehicle vehicle = iterator.next();
+            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){
+                filteredList.add(vehicle);
             }
         }
         return filteredList;
@@ -53,8 +59,10 @@ public class Dealership {
         Iterator<Vehicle> iterator = inventory.iterator();
 
         while (iterator.hasNext()){
-            if (iterator.next().getYear() >= min && iterator.next().getYear() <= max){
-                filteredList.add(iterator.next());
+
+            Vehicle vehicle = iterator.next();
+            if (vehicle.getYear() >= min && vehicle.getYear() <= max){
+                filteredList.add(vehicle);
             }
         }
         return filteredList;
@@ -67,8 +75,10 @@ public class Dealership {
         Iterator<Vehicle> iterator = inventory.iterator();
 
         while (iterator.hasNext()){
-            if (iterator.next().getColor().equalsIgnoreCase(color)){
-                filteredList.add(iterator.next());
+
+            Vehicle vehicle = iterator.next();
+            if (vehicle.getColor().equalsIgnoreCase(color)){
+                filteredList.add(vehicle);
             }
         }
         return filteredList;
@@ -81,8 +91,9 @@ public class Dealership {
         Iterator<Vehicle> iterator = inventory.iterator();
 
         while (iterator.hasNext()){
-            if (iterator.next().getOdometer() >= min && iterator.next().getOdometer() <= max){
-                filteredList.add(iterator.next());
+            Vehicle vehicle = iterator.next();
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max){
+                filteredList.add(vehicle);
             }
         }
 
@@ -96,8 +107,9 @@ public class Dealership {
         Iterator<Vehicle> iterator = inventory.iterator();
 
         while (iterator.hasNext()){
-            if (iterator.next().getVehicleType().equalsIgnoreCase(vehicleType)){
-                filteredList.add(iterator.next());
+            Vehicle vehicle = iterator.next();
+            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)){
+                filteredList.add(vehicle);
             }
         }
 
@@ -119,7 +131,9 @@ public class Dealership {
         Iterator<Vehicle> iterator = inventory.iterator();
 
         while (iterator.hasNext()){
-            if (iterator.next().getVin() == vin){
+
+            Vehicle vehicle = iterator.next();
+            if (vehicle.getVin() == vin){
                 iterator.remove();
             }
         }

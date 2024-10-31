@@ -216,9 +216,12 @@ public class UserInterface {
     }
 
     private void displayVehicles(List<Vehicle> vehicles) {
-
-        for (Vehicle vehicle : vehicles) {
-            System.out.println(vehicle);
+        if (vehicles.isEmpty()) {
+            System.out.println("No vehicles found.");
+        } else {
+            for (Vehicle vehicle : vehicles) {
+                System.out.println(vehicle);
+            }
         }
     }
 }

@@ -65,6 +65,8 @@ public class DealershipFileManager {
 
                     vehicles.add(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
                 }
+
+                i++;
             }
 
             dealership = new Dealership(dealerName, dealerAddress, dealerPhone);
