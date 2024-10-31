@@ -4,31 +4,37 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Manages reading and writing dealership data to and from a file.
 public class DealershipFileManager {
 
+    // Default filename for storing dealership data
     private String filename = "dealership.csv";
 
     public String getFilename() {
         return filename;
     }
 
+    //// Instance of the Dealership class to hold dealership data
     Dealership dealership;
 
     public void setFilename(String filename) {
         this.filename = filename;
     }
 
+    //Reads dealership data from the specified file and constructs a Dealership object.
     public Dealership getDealership() {
 
         try {
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
 
+            //Initialize the dealership variables
             String dealerName = "";
             String dealerAddress = "";
             String dealerPhone = "";
 
             ArrayList<Vehicle> vehicles = new ArrayList<>();
+            //Initialize the vehicle variables
             int vin = 0;
             int year = 0;
             String make = "";
@@ -39,12 +45,15 @@ public class DealershipFileManager {
             double price = 0;
 
             String input;
+
+            //Counter to determine which line we are at
             int i = 0;
 
             while ((input = bufferedReader.readLine()) != null) {
 
                 String[] strings = input.split("\\|");
 
+                //If the counter shows we are reading the first line, create a dealership object
                 if (i < 1) {
 
                     dealerName = strings[0];
@@ -52,6 +61,7 @@ public class DealershipFileManager {
                     dealerPhone = strings[2];
                 }
 
+                //If the counter shows we are reading not the first line, create a vehicle object
                 if (i >= 1) {
 
                     vin = Integer.parseInt(strings[0]);

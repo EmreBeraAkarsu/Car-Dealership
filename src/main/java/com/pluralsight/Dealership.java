@@ -18,6 +18,7 @@ public class Dealership {
         this.inventory = new ArrayList<>();
     }
 
+    //Retrieves a list of vehicles within a specified price range.
     public List<Vehicle> getVehiclesByPrice(double min,double max){
 
         List<Vehicle> filteredList = new ArrayList<>();
@@ -33,9 +34,10 @@ public class Dealership {
             }
         }
         return filteredList;
-        
+
     }
 
+    //Retrieves a list of vehicles that match a specified make and model.
     public List<Vehicle> getVehiclesByMakeModel(String make, String model){
 
         List<Vehicle> filteredList = new ArrayList<>();
@@ -52,6 +54,7 @@ public class Dealership {
         return filteredList;
     }
 
+    //Retrieves a list of vehicles within a specified range of manufacturing years.
     public List<Vehicle>  getVehiclesByYear(int min, int max){
 
         List<Vehicle> filteredList = new ArrayList<>();
@@ -68,6 +71,7 @@ public class Dealership {
         return filteredList;
     }
 
+    //Retrieves a list of vehicles that match a specified color.
     public List<Vehicle> getVehiclesByColor(String color){
 
         List<Vehicle> filteredList = new ArrayList<>();
@@ -84,6 +88,7 @@ public class Dealership {
         return filteredList;
     }
 
+    //Retrieves a list of vehicles within a specified range of mileage (odometer reading).
     public  List<Vehicle> getVehiclesByMileage(int min, int max){
 
         List<Vehicle> filteredList = new ArrayList<>();
@@ -100,6 +105,7 @@ public class Dealership {
         return filteredList;
     }
 
+    //Retrieves a list of vehicles that match a specified type.
     public  List<Vehicle> getVehiclesByType(String vehicleType){
 
         List<Vehicle> filteredList = new ArrayList<>();
@@ -116,16 +122,23 @@ public class Dealership {
         return filteredList;
     }
 
+    //Retrieves the entire inventory of vehicles.
     public  List<Vehicle> getAllVehicles(){
 
         return inventory;
     }
 
+    //Adds a new vehicle to the inventory.
     public void addVehicle(Vehicle vehicle){
 
         inventory.add(vehicle);
     }
 
+    ///**
+    //     * Removes a vehicle from the inventory by VIN.
+    //     *
+    //     * @param vin, VIN of the vehicle to be removed
+    //     */
     public void removeVehicle(int vin){
 
         Iterator<Vehicle> iterator = inventory.iterator();
@@ -137,5 +150,16 @@ public class Dealership {
                 iterator.remove();
             }
         }
+    }
+
+    //Returns a string representation of the dealership, including its name, address, phone number, and inventory.
+    @Override
+    public String toString() {
+        return "Dealership{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", inventory=" + inventory +
+                '}';
     }
 }

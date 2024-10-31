@@ -2,6 +2,7 @@ package com.pluralsight;
 
 public class Vehicle {
 
+    //Variables of a vehicle
     private int vin;
     private int year;
     private String make;
@@ -11,6 +12,7 @@ public class Vehicle {
     private int odometer;
     private double price;
 
+    //constructor
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
         this.vin = vin;
         this.year = year;
@@ -22,6 +24,7 @@ public class Vehicle {
         this.price = price;
     }
 
+    //Getters and setters
     public int getVin() {
         return vin;
     }
@@ -86,6 +89,7 @@ public class Vehicle {
         this.price = price;
     }
 
+    //Overriding the toString method to visualize the data of a vehicle
     @Override
     public String toString() {
         return "Vehicle{" +
